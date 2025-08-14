@@ -1,5 +1,25 @@
 "use client";
 
+import Link from "next/link";
+import { Cinzel_Decorative, Inter} from "next/font/google";
+import { CiSearch } from "react-icons/ci";
+import { IoBagOutline } from "react-icons/io5";
+import Image from "next/image";
+
+
+
+const cinzel_decorative = Cinzel_Decorative({
+     subsets: ["latin"],  
+    weight: ["400", "700"], 
+    display:"swap"
+})
+
+const inter = Inter({
+    subsets: ["latin"],
+    weight:["400", "600", "700", "800"],
+    display:"swap",
+})
+
 const Navbar = ()=>{
 
     const Links = [
@@ -11,7 +31,7 @@ const Navbar = ()=>{
     ]
     return(
         <div className="max-w-6xl w-full mx-auto">
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar">
              <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -19,29 +39,41 @@ const Navbar = ()=>{
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        
+        className="menu menu-sm dropdown-content bg-base-100
+        space-y-6 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        {
+            Links.map((link)=>(
+                <Link className={`${inter.className} space-y-4
+                text-[#555555] text-lg font-semibold`}
+                href={link.path} 
+                key={link.path} 
+                title={link.title}>{link.title}</Link>
+            ))
+        }
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <Link href="/" className="w-[101px] h-[54px]">
+        <img src="https://i.ibb.co.com/2HhwB7k/Group-1.png" className="w-full h-full" alt="" />
+    </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+    <ul className="menu menu-horizontal px-1 space-x-8">
+         {
+            Links.map((link)=>(
+                <Link className={`${inter.className} space-y-4
+                text-[#555555] text-lg font-semibold`}
+                href={link.path} 
+                key={link.path} 
+                title={link.title}>{link.title}</Link>
+            ))
+        }
     </ul>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
+  <div className="navbar-end space-x-6">
+    <Link href=""> <IoBagOutline className="text-lg font-bold"/> </Link>
+    <Link href=""><CiSearch className="text-lg font-bold"/></Link>
+    <Link href="" className={`${inter.className} px-6 py-3 text-lg font-semibold border-2 text-[#FF3811]
+      rounded-lg border-[#FF3811]`}>Appointment</Link>
   </div>
 </div>
         </div>

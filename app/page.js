@@ -1,13 +1,16 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Banner from "@/components/HomePage/Banner/Banner";
+import About from "@/components/HomePage/About/About";
+import Service from "@/components/HomePage/Service/Service";
 
 export default function Home() {
   return (
     <div>
       <main>
-       
-      <h2>Home Page is Ready</h2> 
-
+        <Banner></Banner>
+        <About></About>
+        <Service></Service>
       </main>
       
     </div>
